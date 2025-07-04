@@ -8,6 +8,8 @@ import AuthModal from './AuthModal';
 import { createPortal } from 'react-dom';
 import ProfileModal from './ProfileModal';
 import { Switch } from "@/components/ui/switch";
+import { useIsMobile } from '@/hooks/use-mobile';
+import MobileMarvelMenu from './MobileMarvelMenu';
 
 interface NavItem {
   title: string;
@@ -96,6 +98,7 @@ const Header = () => {
     }
     return false;
   });
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -358,94 +361,14 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="fixed inset-0 z-[1001] md:hidden bg-black/95 backdrop-blur-md border-b border-white/10 overflow-hidden"
-            >
-              <div className="px-6 py-6 space-y-6 overflow-y-auto max-h-screen">
-                {/* Mobile Auth Buttons */}
-                {user ? (
-                  <div className="flex flex-col gap-4">
-                    <motion.button
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-red-600 to-red-800 rounded-lg text-white font-medium text-base"
-                      onClick={() => {
-                        setIsProfileModalOpen(true);
-                        setIsMobileMenuOpen(false);
-                      }}
-                    >
-                      <UserCircle className="w-5 h-5" />
-                      Profile
-                    </motion.button>
-                    <motion.button
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-gray-700 to-gray-900 rounded-lg text-white font-medium text-base"
-                      onClick={() => {
-                        handleLogout();
-                        setIsMobileMenuOpen(false);
-                      }}
-                      disabled={isLoggingOut}
-                    >
-                      <LogOut className="w-5 h-5" />
-                      {isLoggingOut ? 'Signing out...' : 'Sign Out'}
-                    </motion.button>
-                  </div>
-                ) : (
-                  <div className="flex flex-col gap-4">
-                    <motion.button
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => {
-                        handleAuthClick('login');
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="flex items-center justify-center px-6 py-4 bg-gradient-to-r from-gray-700 to-gray-900 rounded-lg text-white font-medium text-base transition-all duration-300"
-                    >
-                      Sign In
-                    </motion.button>
-                    <motion.button
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => {
-                        handleAuthClick('signup');
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="flex items-center justify-center px-6 py-4 bg-gradient-to-r from-red-600 to-red-700 rounded-lg text-white font-medium text-base transition-all duration-300"
-                    >
-                      Sign Up
-                    </motion.button>
-                  </div>
-                )}
-
-                {/* Mobile Navigation Links */}
-                <div className="border-t border-white/10 pt-6">
-                  <div className="space-y-4">
-                    {navItems.map((item) => (
-                      <motion.div
-                        key={item.path}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Link
-                          to={item.path}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="flex items-center gap-4 p-4 text-gray-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
-                        >
-                          <span className="text-xl">{item.icon}</span>
-                          <div className="flex-1">
-                            <div className="font-medium text-base">{item.title}</div>
-                            <div className="text-sm text-gray-500 mt-1">{item.description}</div>
-                          </div>
-                        </Link>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <MobileMarvelMenu
+          open={isMobileMenuOpen && isMobile}
+          onClose={() => setIsMobileMenuOpen(false)}
+          navItems={navItems}
+          user={user}
+          onProfile={() => setIsProfileModalOpen(true)}
+          onAuth={handleAuthClick}
+        />
 
         {/* Desktop Navigation Menu */}
         <nav className="hidden md:block bg-black relative z-[1001]">
