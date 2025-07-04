@@ -2,7 +2,7 @@
 
 A polished, high-performance web application crafted to visually explore the Marvel Cinematic Universe (MCU). From movies and TV shows to specials and iconic characters, the platform presents MCU content in a visually immersive, intuitive, and accessible format. The project leverages cutting-edge web development tools and best practices in design systems, state management, and performance optimization.
 
-🔗 **Live Demo**: https://marvel-show-case.vercel.app/
+🔗 **Live**: https://marvel-show-case.vercel.app/
 
 ## 🏆 Project Highlights
 
@@ -110,7 +110,6 @@ The built files will be in the `dist/` directory, ready to be deployed. This pro
 
 Frontend Developer passionate about creating elegant interfaces, dynamic web experiences, and learning through modern tools. This project reflects my curiosity and ambition to explore the edge of developer productivity through AI-enhanced tools like **Cursor** and **ChatGPT**, while maintaining deep control and vision over the final product.
 
-- GitHub: https://github.com/RithwikBandi
 - Project Live: https://marvel-show-case.vercel.app/
 
 ## 📝 License
