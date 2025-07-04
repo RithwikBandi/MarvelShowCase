@@ -1,0 +1,16 @@
+{
+  "name": "Marvel Showcase",
+  "short_name": "Marvel",
+  "icons": [
+    {
+      "src": "/images/marvel-m-icon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#EC1D24",
+  "background_color": "#000000"
+} 

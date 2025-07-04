@@ -1,0 +1,9 @@
+#root {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Remove default margin on body */
+body {
+  margin: 0;
+}

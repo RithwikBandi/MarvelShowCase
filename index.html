@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Prevent any caching -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <!-- Favicon and PWA config -->
+  <link 
+    rel="icon" 
+    type="image/svg+xml" 
+    href="/images/marvel-m-icon.svg?v=1" 
+  />
+  <link 
+    rel="alternate icon" 
+    type="image/svg+xml" 
+    href="/images/marvel-m-icon.svg?v=1" 
+  />
+  <link 
+    rel="apple-touch-icon" 
+    href="/images/marvel-m-icon.svg?v=1" 
+  />
+  <link 
+    rel="manifest" 
+    href="/site.webmanifest?v=1" 
+  />
+
+  <meta name="theme-color" content="#EC1D24" />
+  <meta name="application-name" content="Marvel Showcase" />
+  <meta name="msapplication-TileColor" content="#EC1D24" />
+  <meta 
+    name="msapplication-TileImage" 
+    content="/images/marvel-m-icon.svg?v=1" 
+  />
+
+  <style>
+    :root {
+      --marvel-red: #EC1D24;
+    }
+    body {
+      background-color: black;
+    }
+  </style>
+
+  <title>Marvel Showcase</title>
+
+  <!-- Preload hero image -->
+  <link
+    rel="preload"
+    as="image"
+    href="/images/heroes/marvel-heroes.jpg"
+    type="image/jpeg"
+    fetchpriority="high"
+  />
+
+  <!-- Preload grid pattern -->
+  <link
+    rel="preload"
+    as="image"
+    href="/images/grid.svg"
+    type="image/svg+xml"
+  />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
