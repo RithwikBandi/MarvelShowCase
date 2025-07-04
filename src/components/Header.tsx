@@ -323,6 +323,20 @@ const Header = () => {
                   height={52}
                 />
               </Link>
+
+              {/* Right Side - Mobile Menu Button */}
+              <button
+                className="md:hidden flex items-center justify-center p-2 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-600 z-[1002]"
+                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                type="button"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-7 h-7" />
+                ) : (
+                  <Menu className="w-7 h-7" />
+                )}
+              </button>
             </div>
           </div>
         </div>
