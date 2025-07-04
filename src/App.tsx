@@ -11,6 +11,7 @@ import MoviesPage from './pages/MoviesPage';
 import TVShowsPage from './pages/TVShowsPage';
 import SpecialPresentationsPage from './pages/SpecialPresentationsPage';
 import NotFound from './pages/NotFound';
+import { Analytics } from '@vercel/analytics/react';
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => {
           </BrowserRouter>
         </AuthProvider>
       </TooltipProvider>
+      <Analytics />
     </QueryClientProvider>
   );
 };
