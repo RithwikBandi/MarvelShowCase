@@ -134,6 +134,19 @@ const Header = () => {
     }
   }, [isDarkMode]);
 
+  useEffect(() => {
+    // Prevent background scroll when mobile menu is open
+    if (isMobileMenuOpen && window.innerWidth < 768) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const clearHoverTimeout = () => {
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
