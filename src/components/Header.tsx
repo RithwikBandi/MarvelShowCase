@@ -99,27 +99,30 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      // Prevent header hiding on scroll if mobile menu is open and on mobile
+      if (isMobileMenuOpen && window.innerWidth < 768) {
+        setIsHeaderVisible(true);
+        lastScrollY.current = window.scrollY;
+        return;
+      }
       const currentScrollY = window.scrollY;
       const scrollingDown = currentScrollY > lastScrollY.current;
-      
       // Only hide header if we've scrolled down past 100px
       if (scrollingDown && isHeaderVisible && currentScrollY > 100) {
         setIsHeaderVisible(false);
       } else if (!scrollingDown && !isHeaderVisible) {
         setIsHeaderVisible(true);
       }
-      
       // Always show header when at the top
       if (currentScrollY < 50) {
         setIsHeaderVisible(true);
       }
-      
       lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHeaderVisible]);
+  }, [isHeaderVisible, isMobileMenuOpen]);
 
   useEffect(() => {
     if (isDarkMode) {
