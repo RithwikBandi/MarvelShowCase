@@ -364,9 +364,9 @@ const Header = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-black/95 backdrop-blur-md border-b border-white/10 overflow-hidden"
+              className="fixed inset-0 z-[1001] md:hidden bg-black/95 backdrop-blur-md border-b border-white/10 overflow-hidden"
             >
-              <div className="px-6 py-6 space-y-6">
+              <div className="px-6 py-6 space-y-6 overflow-y-auto max-h-screen">
                 {/* Mobile Auth Buttons */}
                 {user ? (
                   <div className="flex flex-col gap-4">
